@@ -50,6 +50,7 @@ pipeline {
 
                     sh 'python3 ./ec2.py --list'
                     echo 'Listando os recursos com sucesso'
+                    sh 'ansible-inventory -i ./ec2.yml --graph'
 
                 }
 
