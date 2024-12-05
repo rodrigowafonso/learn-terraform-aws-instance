@@ -1,5 +1,8 @@
----
+# demo.aws_ec2.yml
 plugin: amazon.aws.aws_ec2
 
+# Attach the default AWS profile
+aws_profile: default
+
 keyed_groups:
-  - key: webservers
+  - key: tags.webservers
