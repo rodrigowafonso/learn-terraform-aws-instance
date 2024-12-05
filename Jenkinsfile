@@ -14,5 +14,31 @@ pipeline {
 
             }
         }
+
+        stage ('Provisionando a Infraestrutura do Ambiente') {
+
+            environment {
+
+                AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+                AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+                AWS_REGION = credentials('AWS_REGION')
+                AWS_NAME_BUCKET = credentials('AWS_NAME_BUCKET')
+                AWS_TFSTATE_TF_AN = credentials('AWS_TFSTATE_TF_AN')
+
+            }
+
+            steps {
+
+                script {
+
+                    sh 'terraform fmt'
+                    sh 'terraform init -backend-config="bucket=$AWS_NAME_BUCKET -backend-config="key=$AWS_TFSTATE_TF_AN" -backend-config="region=$AWS_REGION"'
+                    sh 'terraform plan'
+                    sh 'terraform apply --auto-approve'
+
+                }
+
+            }
+        }
     }
 }

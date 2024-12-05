@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket = "rwa-terraform-jenkins"
-    key    = "learn-terraform/tf/terraform_tfstate"
-    region = "us-east-1"
+    # bucket = "rwa-terraform-jenkins"
+    # key    = "learn-terraform/tf/terraform_tfstate"
+    # region = "us-east-1"
   }
 
   required_providers {
