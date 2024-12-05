@@ -31,7 +31,7 @@ pipeline {
 
                 script {
 
-                    sh 'python ./ec2.py --list'
+                    sh 'python3 ./ec2.py --list'
                     echo 'Inventário executado com sucesso'
 
                 }
