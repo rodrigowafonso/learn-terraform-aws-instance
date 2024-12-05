@@ -104,16 +104,14 @@ resource "aws_instance" "srv_ubuntu_canonical" {
   }
 
  
-  provisioner "local-exec" {
+  provisioner "local-file" {
 
-    command = <<EOT
+    command = <<EOF
 
-        echo "[WERSERVER]" > /tmp/inventario.ini
-        echo "${var.instance_nome} ansible_host=${aws_instance.srv_ubuntu_canonical.public_ip} ansible_user=ubuntu" >> /tmp/inventario.ini
-        sh 'ls -la'
-        sh 'pwd'
+        echo "[WERSERVER]" > inventario.ini
+        echo "${var.instance_nome} ansible_host=${aws_instance.srv_ubuntu_canonical.public_ip} ansible_user=ubuntu" >> inventario.ini
 
-    EOT
-    
+    EOF
+        filename = "./inventario.ini"
   }
 }
