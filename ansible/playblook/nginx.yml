@@ -4,3 +4,9 @@
   tasks:
     - name: Provisionando o WebServer Nginx
       apt: name=nginx update_cache=yes
+
+- name: Executar script Python 
+  hosts: webservers 
+  tasks: 
+    - name: Executar o script Python 
+      command: python3 ./ec2.py      

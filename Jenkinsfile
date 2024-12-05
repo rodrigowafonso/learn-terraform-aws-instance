@@ -55,10 +55,10 @@ pipeline {
                     // sh 'python3 ./ec2.py --list'
                     // echo 'Listando os recursos com sucesso'
                     // sh 'ansible -i ./ec2.yml --graph'
-                    sh 'ansible --version'
-                    sh 'ansible-playbook --version'
-                    sh 'ansible-galaxy --version'
-                    //sh 'ssh-keygen -f /home/ubuntu/.ssh/known_hosts -R 34.227.26.242'
+                    // sh 'ansible --version'
+                    // sh 'ansible-playbook --version'
+                    // sh 'ansible-galaxy --version'
+                    // sh 'ssh-keygen -f /home/ubuntu/.ssh/known_hosts -R 34.227.26.242'
                     sh 'ansible-playbook -i ./ansible/inventario.ini --private-key="$SSH_PRIVATE_KEY" ./ansible/playblook/nginx.yml'
 
                 }
