@@ -15,7 +15,7 @@ pipeline {
             }
         }
 
-        stage ('Criando o inventário Dinâmico com #Ansible') {
+        stage ('Provisionando o Ambiente com #Terraform') {
 
             environment {
 
@@ -31,11 +31,29 @@ pipeline {
 
                 script {
 
-                    sh 'python3 ./ec2.py --list'
-                    echo 'Inventário executado com sucesso'
+                    sh 'terraform fmt'
+                    sh 'terraform init -backend-config="bucket=$AWS_NAME_BUCKET" -backend-config="key=$AWS_TFSTATE_TF_AN" -backend-config="region=$AWS_REGION"'
+                    sh 'terraform plan'
+                    sh 'terraform apply --auto-approve'
+                    //sh 'terraform destroy --auto-approve'
 
                 }
 
+            }
+        }
+
+        stage ('Criando o inventário Dinâmico com #Ansible') {
+
+            steps {
+
+                script {
+
+                    sh 'python3 ./ec2.py --list'
+                    echo 'Listando os recursos com sucesso'
+
+                }
+
+                
             }
         }
 
