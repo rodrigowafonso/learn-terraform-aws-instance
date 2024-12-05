@@ -103,15 +103,16 @@ resource "aws_instance" "srv_ubuntu_canonical" {
     Name = var.instance_nome_canonical
   }
 
- 
-  provisioner "local-file" {
+}
 
-    command = <<EOF
+resource "local-file" "inventario_ansible" {
+    depends_on = [ aws_instance.srv_ubuntu_canonical ]
 
-        echo "[WERSERVER]" > inventario.ini
-        echo "${var.instance_nome} ansible_host=${aws_instance.srv_ubuntu_canonical.public_ip} ansible_user=ubuntu" >> inventario.ini
+command = <<EOF
 
-    EOF
-        filename = "./inventario.ini"
-  }
+    echo "[WERSERVER]" > ./inventario.ini
+    echo "${var.instance_nome} ansible_host=${aws_instance.srv_ubuntu_canonical.public_ip} ansible_user=ubuntu" >> ./inventario.ini
+
+EOF
+    filename = "./inventario.ini"
 }
