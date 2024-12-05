@@ -7,6 +7,7 @@
 
 - name: Executar script Python 
   hosts: webservers 
+  become: true
   tasks: 
     - name: Executar o script Python 
-      command: python3 ./ec2.py      
+      command: python3 ../../ec2.py      
