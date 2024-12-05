@@ -57,7 +57,7 @@ pipeline {
                 script {
 
                     // echo 'Listando os recursos com sucesso'
-                    sh 'ansible-inventory -i ./inventory_aws_ec2.yml --graph -e aws_access_key="$AWS_ACCESS_KEY_ID" -e aws_secret_key="$AWS_SECRET_ACCESS_KEY"'
+                    sh 'ansible-inventory -i ./inventory_aws_ec2.yml --graph --private-key="$SSH_PRIVATE_KEY" -e aws_access_key="$AWS_ACCESS_KEY_ID" -e aws_secret_key="$AWS_SECRET_ACCESS_KEY"'
                     // sh 'ansible --version'
                     // sh 'ansible-playbook --version'
                     // sh 'ansible-galaxy --version'
