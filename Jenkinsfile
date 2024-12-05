@@ -45,7 +45,11 @@ pipeline {
         stage ('Criando o inventário Dinâmico com #Ansible') {
 
             environment {
+
+                AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+                AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
                 SSH_PRIVATE_KEY=credentials('SSH_PRIVATE_KEY')
+
             }
 
             steps {
@@ -53,7 +57,7 @@ pipeline {
                 script {
 
                     // echo 'Listando os recursos com sucesso'
-                    sh 'ansible-inventory -i ./inventory_aws_ec2.yml --graph'
+                    sh 'ansible-inventory -i ./inventory_aws_ec2.yml --graph -e aws_access_key="$AWS_ACCESS_KEY_ID" -e aws_secret_key="$AWS_SECRET_ACCESS_KEY"'
                     // sh 'ansible --version'
                     // sh 'ansible-playbook --version'
                     // sh 'ansible-galaxy --version'
