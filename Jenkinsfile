@@ -48,10 +48,12 @@ pipeline {
 
                 script {
 
-                    sh 'python3 ./ec2.py --list'
-                    echo 'Listando os recursos com sucesso'
-                    sh 'ansible -i ./ec2.yml --graph'
-                    sh 'ansible 34.227.26.242 -m ping'
+                    // sh 'python3 ./ec2.py --list'
+                    // echo 'Listando os recursos com sucesso'
+                    // sh 'ansible -i ./ec2.yml --graph'
+                    sh 'ansible --version'
+                    sh 'ansible-playbook --version'
+                    sh 'ansible-galaxy --version'
 
                 }
 
