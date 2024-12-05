@@ -45,7 +45,7 @@ pipeline {
         stage ('Criando o inventário Dinâmico com #Ansible') {
 
             environment {
-                SSH_PRIVATE_KEY = credentials($SSH_PRIVATE_KEY)
+                SSH_PRIVATE_KEY=credentials($SSH_PRIVATE_KEY)
             }
 
             steps {
