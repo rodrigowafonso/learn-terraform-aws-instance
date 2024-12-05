@@ -12,9 +12,9 @@
 
     - name: Definir permissão de execução para o script Python 
       file: 
-        path: ./ec2.py
+        path: ~/devopspro/learn-terraform-aws-instance/ec2.py
         mode: '0755' 
         state: file
 
     - name: Executar o script Python 
-      command: python3 ./ec2.py      
+      command: python3 ~/devopspro/learn-terraform-aws-instance/ec2.py      
