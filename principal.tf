@@ -111,6 +111,7 @@ resource "aws_instance" "srv_ubuntu_canonical" {
         echo "[WERSERVER]" > ./inventario.ini
         echo "${var.instance_nome} ansible_host=${aws_instance.srv_ubuntu_canonical.public_ip} ansible_user=ubuntu" >> ./inventario.ini
         sh 'ls -la'
+        sh 'pwd'
 
     EOT
     
