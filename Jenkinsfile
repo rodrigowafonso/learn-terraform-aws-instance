@@ -53,7 +53,7 @@ pipeline {
                 script {
 
                     // echo 'Listando os recursos com sucesso'
-                    sh 'ansible-inventory -i ./ec2.yml --graph'
+                    sh 'ansible-inventory -i ./inventory_aws_ec2.yml --graph'
                     // sh 'ansible --version'
                     // sh 'ansible-playbook --version'
                     // sh 'ansible-galaxy --version'

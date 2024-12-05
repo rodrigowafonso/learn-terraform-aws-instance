@@ -2,7 +2,7 @@
 plugin: amazon.aws.aws_ec2
 
 # Attach the default AWS profile
-aws_profile: default
+aws_profile: rwa_devops
 
 keyed_groups:
   - key: tags.webservers
