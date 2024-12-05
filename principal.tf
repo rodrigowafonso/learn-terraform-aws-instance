@@ -109,7 +109,7 @@ resource "aws_instance" "srv_ubuntu_canonical" {
     command = <<EOT
 
         echo "[WERSERVER]" > inventario.ini
-        echo "${aws_instance.srv_ubuntu_canonical.name} ansible_host=${aws_instance.srv_ubuntu_canonical.public_ip} ansible_user=ubuntu" >> inventario.ini
+        echo "${aws_instance.srv_ubuntu_canonical.tags["Name"]} ansible_host=${aws_instance.srv_ubuntu_canonical.public_ip} ansible_user=ubuntu" >> inventario.ini
 
     EOT
     
