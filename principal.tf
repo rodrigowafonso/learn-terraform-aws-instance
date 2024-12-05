@@ -104,5 +104,4 @@ resource "aws_instance" "srv_ubuntu_canonical" {
     Devops = "webservers"
   }
 
-  }
 }
