@@ -1,0 +1,6 @@
+- name: Configurando o Webserver Nginx
+  hosts: webservers
+  become: true
+  tasks:
+    - name: Provisionando o WebServer Nginx
+      apt: name=nginx update_cache=yes
