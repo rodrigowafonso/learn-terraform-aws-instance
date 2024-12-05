@@ -15,7 +15,7 @@ pipeline {
             }
         }
 
-        stage ('Provisionando a Infraestrutura do Ambiente') {
+        stage ('Provisionando a Infraestrutura do Ambiente #Terraform') {
 
             environment {
 
