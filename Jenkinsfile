@@ -36,7 +36,7 @@ pipeline {
                     sh 'terraform init -backend-config="bucket=$AWS_NAME_BUCKET" -backend-config="key=$AWS_TFSTATE_TF_AN" -backend-config="region=$AWS_REGION"'
                     sh 'terraform plan'
                     sh 'terraform apply --auto-approve'
-                    //sh 'terraform destroy --auto-approve'
+                    sh 'terraform destroy --auto-approve'
 
                 }
 
@@ -65,7 +65,7 @@ pipeline {
         stage ('Provisionando o Webserver NGNIX') {
             steps {
                 script {
-                    sh 'ansible-playbook -i ./inventory_aws_ec2.yml --private-key=$ SSH_PRIVATE_KEY ./ansible/playblook/nginx.yml -o StrictHostKeyChecking=no'
+                    sh 'ansible-playbook -i ./inventory_aws_ec2.yml --private-key=$ SSH_PRIVATE_KEY ./ansible/playblook/nginx.yml'
                 }
             }
         }
