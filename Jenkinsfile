@@ -63,8 +63,7 @@ pipeline {
                     // sh 'ansible-playbook --version'
                     // sh 'ansible-galaxy --version'
                     // sh 'ssh-keygen -f /home/ubuntu/.ssh/known_hosts -R 34.227.26.242'
-                    // sh 'ansible-playbook -i ./ansible/inventario.ini --private-key="$SSH_PRIVATE_KEY" ./ansible/playblook/nginx.yml'
-                    sh 'ansible-playbook inventory_aws_ec2.yml'
+                    sh 'ansible-playbook ./ansible/playblook/nginx.yml'
 
                 }
 
