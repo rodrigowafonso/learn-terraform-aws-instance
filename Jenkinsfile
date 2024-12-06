@@ -44,13 +44,6 @@ pipeline {
         }
 
         stage ('Garantindo que o Setup esta OK') {
-            environment {
-
-                AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
-                AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
-                SSH_PRIVATE_KEY=credentials('SSH_PRIVATE_KEY')
-
-            }
             steps {
                 script {
                     // Garantindo que as configurações do Python estejam ok
@@ -70,6 +63,13 @@ pipeline {
         }
 
         stage ('Provisionando o Webserver NGNIX') {
+            environment {
+
+                AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+                AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+                SSH_PRIVATE_KEY=credentials('SSH_PRIVATE_KEY')
+
+            }
             steps {
                 script {
                     sh 'ansible-playbook -i ./inventory_aws_ec2.yml ./ansible/playblook/nginx.yml'
