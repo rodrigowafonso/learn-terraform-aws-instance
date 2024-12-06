@@ -57,7 +57,7 @@ pipeline {
         stage ('Realizando um Check no Inventory Dinâmico do Ansible') {
             steps {
                 script {
-                    sh 'ansible-inventory -i ./inventory_aws_ec2.yml --graph -o StrictHostKeyChecking=no'
+                    sh 'ansible-inventory -i ./inventory_aws_ec2.yml --graph'
                 }
             }
         }
