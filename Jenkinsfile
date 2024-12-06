@@ -2,16 +2,6 @@ pipeline {
     agent any
 
     stages {
-        environment {
-
-            AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
-            AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
-            SSH_PRIVATE_KEY=credentials('SSH_PRIVATE_KEY')
-            AWS_REGION = credentials('AWS_REGION')
-            AWS_NAME_BUCKET = credentials('AWS_NAME_BUCKET')
-            AWS_TFSTATE_TF_AN = credentials('AWS_TFSTATE_TF_AN')
-
-        }
 
         stage ('Checkout do Código') {
 
@@ -28,15 +18,15 @@ pipeline {
 
         stage ('Provisionando o Ambiente com #Terraform') {
 
-            // environment {
+            environment {
 
-            //     AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
-            //     AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
-            //     AWS_REGION = credentials('AWS_REGION')
-            //     AWS_NAME_BUCKET = credentials('AWS_NAME_BUCKET')
-            //     AWS_TFSTATE_TF_AN = credentials('AWS_TFSTATE_TF_AN')
+                AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+                AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+                AWS_REGION = credentials('AWS_REGION')
+                AWS_NAME_BUCKET = credentials('AWS_NAME_BUCKET')
+                AWS_TFSTATE_TF_AN = credentials('AWS_TFSTATE_TF_AN')
 
-            // }
+            }
 
             steps {
 
