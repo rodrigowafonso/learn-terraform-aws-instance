@@ -35,7 +35,7 @@ pipeline {
                     sh 'terraform init -backend-config="bucket=$AWS_NAME_BUCKET" -backend-config="key=$AWS_TFSTATE_TF_AN" -backend-config="region=$AWS_REGION"'
                     sh 'terraform plan'
                     sh 'terraform apply --auto-approve'
-                    //sh 'terraform destroy --auto-approve'
+                    sh 'terraform destroy --auto-approve'
 
                 }
 
@@ -57,7 +57,7 @@ pipeline {
                 script {
 
                     // echo 'Listando os recursos com sucesso'
-                    sh 'ansible-inventory -i ./inventory_aws_ec2.yml --graph --private-key="$SSH_PRIVATE_KEY" -e aws_access_key="$AWS_ACCESS_KEY_ID" -e aws_secret_key="$AWS_SECRET_ACCESS_KEY"'
+                    sh 'ansible-inventory -i ./inventory_aws_ec2.yml --graph -e aws_access_key="$AWS_ACCESS_KEY_ID" -e aws_secret_key="$AWS_SECRET_ACCESS_KEY"'
                     // sh 'ansible --version'
                     // sh 'ansible-playbook --version'
                     // sh 'ansible-galaxy --version'
