@@ -57,7 +57,7 @@ pipeline {
         stage ('Realizando um Check no Inventory Dinâmico do Ansible') {
             steps {
                 script {
-                    sh 'ansible-inventory -i ./inventory_aws_ec2.yml --graph'
+                    sh 'ansible-inventory -i ./inventory_aws_ec2.yml --graph -o StrictHostKeyChecking=no'
                 }
             }
         }
@@ -72,7 +72,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh 'ansible-playbook -i ./inventory_aws_ec2.yml ./ansible/playblook/nginx.yml'
+                    sh 'ansible-playbook -i ./inventory_aws_ec2.yml --private-key=$ SSH_PRIVATE_KEY ./ansible/playblook/nginx.yml -o StrictHostKeyChecking=no'
                 }
             }
         }

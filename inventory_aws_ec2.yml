@@ -1,8 +1,6 @@
 # demo.aws_ec2.yml
 plugin: aws_ec2
 
-profile: rwa_devops
-
 regions: 
   - us-east-1
 
