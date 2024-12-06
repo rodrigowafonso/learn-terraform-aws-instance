@@ -5,4 +5,4 @@ plugin: amazon.aws.aws_ec2
 # profile: rwa_devops
 
 keyed_groups:
-  - key: tags.webservers
+  - key: webservers
