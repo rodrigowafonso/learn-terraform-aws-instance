@@ -1,9 +1,9 @@
 # demo.aws_ec2.yml
 plugin: amazon.aws.aws_ec2
 
-filters:
-  instance-state-name: running
+regions: 
+  - us-east-1
 
 keyed_groups:
-  - prefix: tag
-    key: tags
+  - key: tags.Devops
+    separator: ""
