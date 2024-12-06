@@ -1,7 +1,7 @@
 # demo.aws_ec2.yml
 plugin: amazon.aws.aws_ec2
 
-# Attach the default AWS profile
+# Attach the default AWS profile #
 aws_profile: rwa_devops
 
 keyed_groups:
