@@ -9,6 +9,7 @@ pipeline {
 
                 git url: 'https://github.com/rodrigowafonso/learn-terraform-aws-instance.git', branch: 'main'
                 sh 'ls -la'
+                sh 'pwd'
                 echo 'Repositório Clonado com Sucesso'
 
 
