@@ -35,7 +35,7 @@ pipeline {
                     sh 'terraform init -backend-config="bucket=$AWS_NAME_BUCKET" -backend-config="key=$AWS_TFSTATE_TF_AN" -backend-config="region=$AWS_REGION"'
                     sh 'terraform plan'
                     sh 'terraform apply --auto-approve'
-                    //sh 'terraform destroy --auto-approve'
+                    sh 'terraform destroy --auto-approve'
 
                 }
 
@@ -62,7 +62,7 @@ pipeline {
                     // sh 'ansible-playbook --version'
                     // sh 'ansible-galaxy --version'
                     // sh 'ssh-keygen -f /home/ubuntu/.ssh/known_hosts -R 34.227.26.242'
-                    sh 'ansible-playbook --private-key="$SSH_PRIVATE_KEY" ./ansible/playblook/nginx.yml'
+                    sh 'ansible-playbook -i ./ansible/inventario.ini --private-key="$SSH_PRIVATE_KEY" ./ansible/playblook/nginx.yml'
 
                 }
 
