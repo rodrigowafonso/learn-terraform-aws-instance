@@ -1,8 +1,9 @@
 # demo.aws_ec2.yml
 plugin: amazon.aws.aws_ec2
 
-# Attach the default AWS profile #
-# profile: rwa_devops
+filters:
+  instance-state-name: running
 
 keyed_groups:
-  - key: webservers
+  - prefix: tag
+    key: tags

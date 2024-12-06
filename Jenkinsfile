@@ -43,8 +43,7 @@ pipeline {
             }
         }
 
-        stage ('Criando o inventário Dinâmico com #Ansible') {
-
+        stage ('Garantindo que o Setup esta OK') {
             environment {
 
                 AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
@@ -52,22 +51,29 @@ pipeline {
                 SSH_PRIVATE_KEY=credentials('SSH_PRIVATE_KEY')
 
             }
-
             steps {
-
                 script {
-
-                    // echo 'Listando os recursos com sucesso'
-                    //sh 'ansible-inventory -i ./inventory_aws_ec2.yml --graph'
-                    // sh 'ansible --version'
-                    // sh 'ansible-playbook --version'
-                    // sh 'ansible-galaxy --version'
-                    // sh 'ssh-keygen -f /home/ubuntu/.ssh/known_hosts -R 34.227.26.242'
-                    sh 'ansible-playbook -i ./inventory_aws_ec2.yml ./ansible/playblook/nginx.yml'
-
+                    // Garantindo que as configurações do Python estejam ok
+                    sh 'pip install boto3 botocore'
+                    // garantindo que o plugin Ansible AWS_EC2 esteja instalado
+                    sh 'ansible-galaxy collection install amazon.aws'
                 }
+            }
+        }
 
-                
+        stage ('Realizando um Check no Inventory Dinâmico do Ansible') {
+            steps {
+                script {
+                    sh 'ansible-inventory -i ./inventory_aws_ec2.yml --graph'
+                }
+            }
+        }
+
+        stage ('Provisionando o Webserver NGNIX') {
+            steps {
+                script {
+                    sh 'ansible-playbook -i ./inventory_aws_ec2.yml ./ansible/playblook/nginx.yml'
+                }
             }
         }
 
